@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellessence · Catálogo Dia dos Namorados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F5EAED;
+    --blush: #EDD4DA;
+    --rose: #9B3A4A;
+    --rose-dark: #6B1F2E;
+    --gold: #B8956A;
+    --gold-light: #E2CEBA;
+    --brown-dark: #1A0A0E;
+    --text-dark: #2A1018;
+    --text-mid: #6B3040;
+    --text-light: #9A7070;
+    --white: #FFFFFF;
+    --green-wa: #25724E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #1A0A0E;
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* ─── CAPA ─── */
+  #capa {
+    min-height: 100vh;
+    background: var(--creme);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 32px;
+  }
+
+  .capa-bar-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--rose), var(--gold), var(--gold-light));
+  }
+  .capa-bar-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--rose), var(--gold), var(--gold-light));
+  }
+
+  .capa-corner {
+    position: absolute;
+    width: 70px; height: 70px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.4;
+  }
+  .capa-corner.tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+  .capa-corner.tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+  .capa-corner.bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+  .capa-corner.br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+  /* Corações flutuantes de fundo */
+  .coracao-flutuante {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    animation: flutuar var(--dur, 6s) ease-in var(--delay, 0s) infinite;
+    font-size: var(--size, 18px);
+    color: var(--rose);
+  }
+  @keyframes flutuar {
+    0%   { opacity: 0; transform: translateY(0) scale(0.8) rotate(-10deg); }
+    15%  { opacity: 0.18; }
+    80%  { opacity: 0.10; }
+    100% { opacity: 0; transform: translateY(-280px) scale(1.1) rotate(10deg); }
+  }
+
+  .capa-floral {
+    position: absolute;
+    opacity: 0.05;
+    width: 420px; height: 420px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* Logo */
+  .capa-logo {
+    width: clamp(220px, 55vw, 340px);
+    margin-bottom: 4px;
+    animation: fadeUp 0.9s ease 0.1s both;
+  }
+
+  .capa-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  /* Divisor com coração */
+  .capa-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px auto 20px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .capa-divider-line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .capa-divider-heart {
+    color: var(--rose-dark);
+    font-size: 16px;
+    line-height: 1;
+    animation: batimento 1.4s ease-in-out infinite;
+  }
+  @keyframes batimento {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.25); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.15); }
+    56%       { transform: scale(1); }
+  }
+
+  .capa-subtitulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 5vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose-dark);
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 12px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  .capa-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 4vw, 18px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-mid);
+    text-align: center;
+    max-width: 380px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .capa-btn {
+    background: var(--rose-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+  .capa-btn:hover { background: var(--rose); transform: translateY(-2px); }
+
+  .capa-data {
+    position: absolute;
+    bottom: 28px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ─── GRID DE CESTAS ─── */
+  #cestas {
+    background: #F8EDEF;
+    padding: 60px 24px;
+  }
+
+  .secao-titulo {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .secao-titulo h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 300;
+    color: var(--text-dark);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .secao-titulo p {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .secao-linha {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin: 14px auto 0;
+  }
+
+  /* ─── BARRA DE PESQUISA ─── */
+  .search-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .search-box {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 14px 48px 14px 20px;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .search-box input::placeholder { color: var(--text-light); }
+  .search-box input:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(196,149,138,0.15);
+  }
+  .search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--rose-dark);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+  .search-icon svg {
+    width: 18px; height: 18px;
+    fill: none;
+    stroke: var(--rose-dark);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .search-resultado {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    min-height: 18px;
+  }
+
+  /* ─── FILTROS ─── */
+  .filtros-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .filtro-btn {
+    background: var(--white);
+    border: 1.5px solid var(--gold-light);
+    color: var(--text-mid);
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filtro-btn:hover { border-color: var(--rose); color: var(--rose-dark); }
+  .filtro-btn.ativo {
+    background: var(--rose-dark);
+    border-color: var(--rose-dark);
+    color: var(--white);
+    box-shadow: 0 3px 12px rgba(158,107,98,0.3);
+  }
+  .filtro-resultado {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    min-height: 18px;
+  }
+  .card.oculto { display: none; }
+
+  .grid-cestas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ─── CARD DE CESTA ─── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(60,40,20,0.09);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(60,40,20,0.14);
+  }
+
+  .card-foto {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: contain;
+    background: var(--blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .card-foto-placeholder {
+    width: 100%;
+    aspect-ratio: 9/16;
+    background: linear-gradient(135deg, var(--blush), var(--gold-light));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .card-foto-placeholder .ico { font-size: 48px; opacity: 0.5; }
+
+  .card-numero {
+    position: absolute;
+    top: 12px; left: 14px;
+    background: rgba(46,28,14,0.55);
+    color: var(--gold-light);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  .card-body {
+    padding: 20px 20px 0;
+    flex: 1;
+  }
+  .card-badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold-light);
+    border-radius: 20px;
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .card-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .card-preco-de {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-light);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .card-preco-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .card-por-label {
+    font-size: 11px;
+    color: var(--text-mid);
+  }
+  .card-preco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--rose-dark);
+    line-height: 1;
+  }
+
+  .card-divider {
+    width: 100%; height: 0.5px;
+    background: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .card-itens-titulo {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .card-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .card-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-mid);
+    line-height: 1.4;
+  }
+  .card-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--rose);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .card-footer {
+    padding: 0 20px 20px;
+  }
+  .card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green-wa);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 13px 0;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .card-btn:hover { background: #1e5e3e; transform: translateY(-1px); }
+  .card-btn svg { width: 17px; height: 17px; fill: white; flex-shrink: 0; }
+
+  /* ─── BOTÃO CARRINHO ─── */
+  .card-footer { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .btn-carrinho {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--rose-dark); color: var(--white);
+    border-radius: 10px; padding: 13px 0; width: 100%;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    cursor: pointer; border: none; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-carrinho:hover { background: var(--rose); transform: translateY(-1px); }
+  .btn-carrinho.adicionado { background: #555; }
+
+  /* ─── CARRINHO FLUTUANTE ─── */
+  #carrinho-float {
+    position: fixed; bottom: 28px; right: 22px; z-index: 9999;
+    background: linear-gradient(135deg, #6B1F2E, #9B3A4A);
+    color: white;
+    border-radius: 50px; padding: 14px 22px;
+    display: none; align-items: center; gap: 10px;
+    box-shadow: 0 4px 24px rgba(107,31,46,0.45);
+    cursor: pointer; font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 600;
+    transition: transform 0.2s;
+    border: 1px solid rgba(184,149,106,0.4);
+  }
+  #carrinho-float:hover { transform: scale(1.05); }
+  #carrinho-float .carr-icon { font-size: 20px; }
+  #carrinho-float .carr-badge {
+    background: white; color: var(--rose-dark);
+    border-radius: 50%; width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+
+  /* ─── MODAL CARRINHO ─── */
+  #modal-overlay {
+    position: fixed; inset: 0; background: rgba(26,10,14,0.7);
+    z-index: 99999; display: none; align-items: flex-end; justify-content: center;
+  }
+  #modal-overlay.open { display: flex; }
+  #modal-box {
+    background: linear-gradient(170deg, #fff5f5 0%, #fff 60%);
+    width: 100%; max-width: 480px;
+    border-radius: 24px 24px 0 0; padding: 0 0 36px;
+    max-height: 85vh; overflow-y: auto;
+    font-family: 'Montserrat', sans-serif;
+    border-top: 3px solid #9B3A4A;
+    box-shadow: 0 -8px 40px rgba(107,31,46,0.2);
+  }
+
+  /* Cabeçalho do modal */
+  .modal-header {
+    background: linear-gradient(135deg, #6B1F2E 0%, #9B3A4A 100%);
+    padding: 22px 24px 18px;
+    border-radius: 22px 22px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-header::before {
+    content: '♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥';
+    position: absolute;
+    top: 6px; left: 0; right: 0;
+    font-size: 9px; letter-spacing: 6px;
+    color: rgba(255,255,255,0.15);
+    text-align: center;
+    pointer-events: none;
+  }
+  .modal-header::after {
+    content: '♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥';
+    position: absolute;
+    bottom: 6px; left: 0; right: 0;
+    font-size: 9px; letter-spacing: 6px;
+    color: rgba(255,255,255,0.15);
+    text-align: center;
+    pointer-events: none;
+  }
+  .modal-header h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 28px !important; font-weight: 400 !important;
+    color: white !important; margin-bottom: 2px !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  }
+  .modal-header .modal-sub {
+    font-size: 10px !important; color: rgba(255,255,255,0.7) !important;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0 !important;
+  }
+  .modal-body { padding: 20px 24px 0; }
+
+  #btn-fechar-modal {
+    position: absolute; top: 14px; right: 18px;
+    background: rgba(255,255,255,0.2); border: none;
+    font-size: 18px; cursor: pointer; color: white;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  #btn-fechar-modal:hover { background: rgba(255,255,255,0.35); }
+  #modal-box { position: relative; }
+  /* ─── CONTROLE DE QUANTIDADE NO CARRINHO ─── */
+  .carr-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 0.5px solid #EDD4DA;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .carr-item-foto {
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: var(--blush);
+    flex-shrink: 0;
+    border: 1px solid var(--gold-light);
+  }
+  .carr-item-foto-placeholder {
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blush), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+    border: 1px solid var(--gold-light);
+  }
+  .carr-item-esq {
+    display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;
+  }
+  .carr-item-info { flex: 1; min-width: 0; }
+  .carr-item-nome { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+  .carr-item-preco { font-size: 12px; color: var(--rose-dark); font-weight: 600; margin-top: 2px; }
+  .carr-item-acoes {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .carr-qtd-wrap {
+    display: flex; align-items: center;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 50px;
+    overflow: hidden;
+  }
+  .carr-qtd-btn {
+    background: none; border: none;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700;
+    cursor: pointer; color: var(--rose-dark);
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .carr-qtd-btn:hover { background: var(--blush); }
+  .carr-qtd-num {
+    min-width: 26px; text-align: center;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-dark);
+  }
+  .carr-item-remover {
+    background: none; border: none; color: #ccc; font-size: 18px;
+    cursor: pointer; padding: 0 4px; line-height: 1;
+  }
+  .carr-item-remover:hover { color: var(--rose-dark); }
+  #carr-total {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 18px; padding-top: 14px;
+    border-top: 1.5px dashed #e8c0c0;
+  }
+  #carr-total span:first-child { font-size: 13px; font-weight: 600; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.1em; }
+  #carr-total span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--rose-dark); }
+  #btn-enviar-pedido {
+    margin-top: 20px; width: 100%; padding: 16px;
+    background: linear-gradient(135deg, #25724E, #1e5e3e);
+    color: white; border: none; border-radius: 14px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(37,114,78,0.3);
+  }
+  #btn-enviar-pedido:hover { opacity: 0.9; transform: translateY(-1px); }
+  .carr-aviso-amor {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic;
+    color: #9B3A4A; margin-top: 12px;
+    letter-spacing: 0.04em;
+  }
+  #carr-vazio {
+    text-align: center; padding: 36px 0; color: var(--text-light); font-size: 13px;
+  }
+  #carr-vazio .carr-vazio-heart { font-size: 40px; display: block; margin-bottom: 12px; opacity: 0.4; }
+  #btn-fechar-modal { position: absolute; top: 14px; right: 18px; }
+
+  /* ─── RODAPÉ FINAL ─── */
+  #rodape {
+    background: var(--brown-dark);
+    padding: 60px 32px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .rodape-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(201,168,124,0.05) 0px, rgba(201,168,124,0.05) 1px,
+      transparent 1px, transparent 18px
+    );
+    pointer-events: none;
+  }
+  .rodape-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rose-dark), var(--gold), var(--rose-dark));
+  }
+  .rodape-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .rodape-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 10vw, 64px);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .rodape-divider {
+    width: 36px; height: 1px;
+    background: var(--gold);
+    margin: 20px auto;
+    position: relative;
+  }
+  .rodape-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 4vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose);
+    max-width: 400px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    position: relative;
+  }
+  .rodape-contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+  .rodape-contato {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(201,168,124,0.25);
+    border-radius: 12px;
+    padding: 13px 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .rodape-contato:hover { background: rgba(255,255,255,0.09); }
+  .rodape-contato-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(201,168,124,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .rodape-contato-info { text-align: left; }
+  .rodape-contato-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .rodape-contato-valor {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    display: block;
+  }
+  .rodape-btn-final {
+    display: inline-block;
+    background: var(--rose-dark);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 15px 44px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .rodape-btn-final:hover { background: var(--rose); transform: translateY(-2px); }
+
+  .rodape-mini {
+    margin-top: 40px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.18);
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* ─── ANIMAÇÕES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVO ─── */
+  @media (max-width: 500px) {
+    .grid-cestas { grid-template-columns: 1fr; gap: 20px; }
+    #cestas { padding: 40px 16px; }
+    .rodape-contatos { padding: 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ CAPA ═══ -->
+<section id="capa">
+  <div class="capa-bar-top"></div>
+  <div class="capa-bar-bottom"></div>
+  <div class="capa-corner tl"></div>
+  <div class="capa-corner tr"></div>
+  <div class="capa-corner bl"></div>
+  <div class="capa-corner br"></div>
+
+  <!-- Corações flutuantes -->
+  <span class="coracao-flutuante" style="left:8%;  bottom:10%; --size:14px; --dur:7s;  --delay:0s;">♥</span>
+  <span class="coracao-flutuante" style="left:18%; bottom:5%;  --size:22px; --dur:9s;  --delay:1.2s;">♥</span>
+  <span class="coracao-flutuante" style="left:32%; bottom:8%;  --size:12px; --dur:6s;  --delay:2.5s;">♥</span>
+  <span class="coracao-flutuante" style="left:50%; bottom:3%;  --size:18px; --dur:8s;  --delay:0.7s;">♥</span>
+  <span class="coracao-flutuante" style="left:65%; bottom:12%; --size:10px; --dur:6.5s;--delay:3.1s;">♥</span>
+  <span class="coracao-flutuante" style="left:78%; bottom:6%;  --size:20px; --dur:7.5s;--delay:1.8s;">♥</span>
+  <span class="coracao-flutuante" style="left:90%; bottom:9%;  --size:14px; --dur:9s;  --delay:0.3s;">♥</span>
+
+  <svg class="capa-floral" viewBox="0 0 420 420" fill="none">
+    <path d="M210 340
+      C210 340 60 240 60 140
+      C60 90 100 55 150 70
+      C175 78 195 98 210 118
+      C225 98 245 78 270 70
+      C320 55 360 90 360 140
+      C360 240 210 340 210 340Z"
+      fill="#9B3A4A" opacity="0.8"/>
+  </svg>
+
+  <div class="capa-eyebrow">Presenteie com amor · Dia dos Namorados 2026</div>
+  <svg class="capa-logo" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BellEssence">
+    <text x="200" y="62" text-anchor="middle"
+      font-family="'Cormorant Garamond', Georgia, serif"
+      font-size="68"
+      font-weight="500"
+      letter-spacing="1"
+      fill="#6B1F2E">BellEssence</text>
+  </svg>
+  <div class="capa-divider">
+    <div class="capa-divider-line"></div>
+    <span class="capa-divider-heart">♥</span>
+    <div class="capa-divider-line"></div>
+  </div>
+  <div class="capa-subtitulo">Catálogo Especial · Dia dos Namorados</div>
+  <div class="capa-frase">"Para quem faz seu coração sorrir — o presente perfeito existe."</div>
+  <a href="#cestas" class="capa-btn">Ver cestas →</a>
+  <div class="capa-data">Junho · 2026</div>
+</section>
+
+<!-- ═══ CESTAS ═══ -->
+<section id="cestas">
+  <div class="secao-titulo">
+    <h2>Nossas Cestas ♥</h2>
+    <p>Edição especial · Dia dos Namorados</p>
+    <div class="secao-linha"></div>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <input
+        type="text"
+        id="campo-busca"
+        placeholder="Pesquisar produto nas cestas... (ex: hidratante, body splash)"
+        oninput="pesquisar(this.value)"
+      >
+      <span class="search-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="search-resultado" id="search-resultado"></div>
+
+  <div class="filtros-wrap">
+    <button class="filtro-btn ativo" onclick="filtrar('todos', this)">♥ Todos</button>
+    <button class="filtro-btn" onclick="filtrar('0-80', this)">Até R$ 80</button>
+    <button class="filtro-btn" onclick="filtrar('80-150', this)">De R$ 80 a R$ 150</button>
+    <button class="filtro-btn" onclick="filtrar('150-250', this)">De R$ 150 a R$ 250</button>
+    <button class="filtro-btn" onclick="filtrar('250+', this)">R$ 250 em diante</button>
+  </div>
+  <div class="filtro-resultado" id="filtro-resultado"></div>
+
+  <div class="grid-cestas" id="grid">
+    <!-- As 20 cestas são geradas pelo JS abaixo -->
+  </div>
+</section>
+
+<!-- ═══ RODAPÉ ═══ -->
+<section id="rodape">
+  <div class="rodape-pattern"></div>
+  <div class="rodape-bar"></div>
+  <div class="rodape-eyebrow">Obrigada pela visita</div>
+  <div class="rodape-nome">Bellessence</div>
+  <div class="rodape-divider"></div>
+  <div class="rodape-cta">♥ Garanta já o presente perfeito para o Dia dos Namorados ♥</div>
+
+  <div class="rodape-contatos">
+    <a class="rodape-contato" href="https://wa.me/5517991564048" target="_blank">
+      <div class="rodape-contato-icon">📱</div>
+      <div class="rodape-contato-info">
+        <span class="rodape-contato-label">WhatsApp</span>
+        <span class="rodape-contato-valor">(17) 99156-4048</span>
+      </div>
+    </a>
+    <a class="rodape-contato" href="https://instagram.com/bellessence.nay" target="_blank">
+      <div class="rodape-contato-icon">📷</div>
+      <div class="rodape-contato-info">
+        <span class="rodape-contato-label">Instagram</span>
+        <span class="rodape-contato-valor">@bellessence.nay</span>
+      </div>
+    </a>
+    <a class="rodape-contato" href="https://maps.google.com/?q=R.+Flavio+Bianchini+8012+Parque+das+Amoras+II" target="_blank">
+      <div class="rodape-contato-icon">📍</div>
+      <div class="rodape-contato-info">
+        <span class="rodape-contato-label">Endereço</span>
+        <span class="rodape-contato-valor">R. Flavio Bianchini, 8012 - Parque das Amoras II</span>
+      </div>
+    </a>
+  </div>
+
+  <a class="rodape-btn-final" href="https://wa.me/5517991564048" target="_blank">Fazer meu pedido agora</a>
+  <div class="rodape-mini">Bellessence · Dia dos Namorados 2026</div>
+</section>
+
+<script>
+// ══════════════════════════════════════════════
+//  DADOS DAS CESTAS — edite aqui as 20 cestas
+// ══════════════════════════════════════════════
+// ─────────────────────────────────────────────────
+// ✏️  PRODUTOS ESGOTADOS — edite apenas esta lista
+//     Coloque o número da cesta/presente aqui
+//     Exemplos: [3, 15, 72]
+const esgotados = [5, 9, 11, 13, 21, 27, 54, 60, 66, 74];
+// ─────────────────────────────────────────────────
+
+const cestas = [
+  { nome: "Cesta 1", precoPor: "139,90", itens: ["Body Splash Luna 200ml", "Creme para as mãos Luna 40g", "Porta Joias", "Cesta Presenteável", "Balão"], foto: "fotos/cesta1.jpg" },
+  { nome: "Cesta 2", precoPor: "64,90", itens: ["Sabonete Em Barra Amora Vermelha e Jabuticaba Tododia 90g", "Hidratante Corporal Tododia Amora Vermelha e Jabuticaba 200ml", "Cesta Presenteável"], foto: "fotos/cesta2.jpg" },
+  { nome: "Cesta 3", precoPor: "126,90", itens: ["Hidratante Corporal Cereja e Avelã 400ml", "Caixa Sabonete Romã e Amendoas Glaceadas 5x90g", "Carteira Vermelha", "Cesta Presenteável"], foto: "fotos/cesta3.jpg" },
+  { nome: "Cesta 4", precoPor: "89,90", itens: ["Hidratante Corporal Amora Vermelha e Jabuticaba 100ml", "Caneca Mãe Corações", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta4.jpg" },
+  { nome: "Cesta 5", precoPor: "81,90", itens: ["Hidratante Corporal Avelã e Cassis 100ml", "Creme para as mãos Avelã e Cassis 50ml", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta5.jpg" },
+  { nome: "Cesta 6", precoPor: "141,90", itens: ["Body Splash Kaiak Tradicional 200ml", "Hidratante Corporal", "Acqua Gel Pós Sol 400ml", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta6.jpg" },
+  { nome: "Cesta 7", precoPor: "255,90", itens: ["Body Splash Romã 150ml", "Creme de Mãos Romã 50ml", "Gelatina de Banho Romã 55g", "Porta Joias", "Cesta Presenteável"], foto: "fotos/cesta7.jpg" },
+  { nome: "Cesta 8", precoPor: "91,90", itens: ["Hidratante Corporal Macadamia 200ml", "Porta Joias", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta8.jpg" },
+  { nome: "Cesta 9", precoPor: "111,90", itens: ["Hidratante Corporal Avelã e Cassis 100ml", "Creme para as mãos Avelã e Cassis 50ml", "Óleo Corporal Avelã e Cassis 150ml", "Cesta Presenteável"], foto: "fotos/cesta9.jpg" },
+  { nome: "Cesta 10", precoPor: "121,90", itens: ["Hidratante Corporal Deleite 200ml", "Sabonete em Barra Deleite 2x80g", "Creme de Mãos Deleite 45g", "Cesta Presenteável"], foto: "fotos/cesta10.jpg" },
+  { nome: "Cesta 11", precoPor: "179,90", itens: ["Hidratante Corporal Ekos Castanha 400ml", "Sabonete em Barra Castanha 2x50g", "Polpa Hidratante para as Mãos Castanha 75g", "Polpa Hidratante para os Pés Castanha 75g", "Cesta Presenteável"], foto: "fotos/cesta11.jpg" },
+  { nome: "Cesta 12", precoPor: "131,90", itens: ["Hidratante Corporal Instance Frutas Vermelha 400ml", "Body Splash Instance Frutas Vermelha 200ml", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta12.jpg" },
+  { nome: "Cesta 13", precoPor: "179,90", itens: ["Body Splash Humor Próprio 200ml", "Gel Hidratante Corporal Iluminador Humor Próprio 200g", "Pelúcia Stitch", "Sabonete Coração Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta13.jpg" },
+  { nome: "Cesta 14", precoPor: "159,90", itens: ["Hidratante Corporal Ekos Maracujá 400ml", "Sabonete em Barra Maracujá Cremoso e Esfoliante 4x100g", "Polpa Hidratante para as Mãos Maracujá 40g", "Cesta Presenteável"], foto: "fotos/cesta14.jpg" },
+  { nome: "Cesta 15", precoPor: "86,90", itens: ["Hidratante Corporal Tododia Cereja e Avelã 200ml + Creme para as Mãos Tododia Cereja e Aveã 50ml", "Cesta Presenteável"], foto: "fotos/cesta15.jpg" },
+  { nome: "Cesta 16", precoPor: "141,90", itens: ["Body Splash Luna 200ml", "Creme para as mãos Luna 40g", "Relógio", "Cesta Presenteável"], foto: "fotos/cesta16.jpg" },
+  { nome: "Cesta 17", precoPor: "126,90", itens: ["Deo Corporal Luna Absoluta 100ml", "Sabonete em Barra Luna Absoluta 90g", "Relogio", "Porta Joias", "Cesta Presenteável"], foto: "fotos/cesta17.jpg" },
+  { nome: "Cesta 18", precoPor: "73,90", itens: ["Hidratante Corporal Instance Karité 75g", "Sabonete em Barra Karité 4x80g", "Cesta Presenteável"], foto: "fotos/cesta18.jpg" },
+  { nome: "Cesta 19", precoPor: "82,90", itens: ["Hidratante Corporal Vivre Jeito Leve", "Sabonete em Barra Vivre 2x", "Cesta Presenteável"], foto: "fotos/cesta19.jpg" },
+  { nome: "Cesta 20", precoPor: "169,90", itens: ["Hidratante Corporal Flor de Pêssego e Jasmim 400ml", "Body Splash Flor de Pêssego e Jasmim 200ml", "Creme para as Mãos Flor de Pêssego e Jasmim 50ml", "Cesta Presenteável"], foto: "fotos/cesta20.jpg" },
+  { nome: "Cesta 21", precoPor: "154,90", itens: ["Body Splash Lyra 100ml", "Hidratante Corporal Lyra 150ml", "Relógio", "Porta Joias", "Cesta Presenteável"], foto: "fotos/cesta21.jpg" },
+  { nome: "Cesta 22", precoPor: "73,90", itens: ["Sabonete Líquido Essencial Exclusivo 100g", "Creme para as Mãos Essencial Exclusivo 40g", "Cesta Presenteável"], foto: "fotos/cesta22.jpg" },
+  { nome: "Cesta 23", precoPor: "189,90", itens: ["Hidratante Corporal Floratta Red 200ml", "Sabonete Líquido Floratta Red 150ml", "Caneca Mães Filete Dourado", "Cesta Presenteável"], foto: "fotos/cesta23.jpg" },
+  { nome: "Cesta 24", precoPor: "86,90", itens: ["Hidratante Corporal Nativa Spa Ameixa Dourada 200ml", "Sabonete em Barra Tododia 90g", "Cesta Presenteável"], foto: "fotos/cesta24.jpg" },
+  { nome: "Cesta 25", precoPor: "113,90", itens: ["Deo Corporal Essencial Atrai 100ml", "Sabonete Líquido Essencial Exclusivo 100g", "Creme para as Mãos Essencial Exclusivo 40g", "Cesta Presenteável"], foto: "fotos/cesta25.jpg" },
+  { nome: "Cesta 26", precoPor: "121,90", itens: ["Hidratante Corporal Deleite 200ml", "Creme de Mãos Deleite 45g", "Porta Jóias", "Cesta Presenteável"], foto: "fotos/cesta26.jpg" },
+  { nome: "Cesta 27", precoPor: "159,90", itens: ["Hidratante Corporal Instance Frutas Vermelha 400ml", "Body Splash Instance Frutas Vermelha 200ml", "Relógio", "Cesta Presenteável"], foto: "fotos/cesta27.jpg" },
+  { nome: "Cesta 28", precoPor: "110,90", itens: ["Hidratante Instance Cereja e Amêndoas 200 ml", "Creme para as mãos Cereja e Amêndoas 30g", "Sabonete Tododia Coração 90 g", "Porta Joias", "Cesta Presenteável"], foto: "fotos/cesta28.jpg" },
+  { nome: "Cesta 29", precoPor: "79,99", itens: ["Hidratante Iluminador Framboesa e Pimenta Vermelha 125 ml", "Body Splash Diva Esplendida", "Sabonete em barra 90g", "Cesta Presenteàvel"], foto: "fotos/cesta29.jpg" },
+  { nome: "Cesta 30", precoPor: "96,90", itens: ["Deo corporal Luna Absoluta 100ml", "Sabonete em Barra Luna Absoluta 90g", "Porta Jóias", "Cesta Presenteável."], foto: "fotos/cesta30.jpg" },
+  { nome: "Cesta 31", precoPor: "89,90", itens: ["Hidratante Corporal Chic Retrô 200ml", "Cremes de Mãos Essencial Exclusivo 40g", "Sabonete em Barra 90g", "Cesta Presenteável."], foto: "fotos/cesta31.jpg" },
+  { nome: "Cesta 32", precoPor: "266,90", itens: ["Deo Parfum Lá Victorie Intense 75ml", "Sabonete Líquido La Victorie Intense 200ml", "Cesta Presenteável."], foto: "fotos/cesta32.jpg" },
+  { nome: "Cesta 33", precoPor: "156,80", itens: ["Colônia Chic Retrô 95ml", "Hidratante Corporal Chic Retrô 200ml", "Cesta Presenteável."], foto: "fotos/cesta33.jpg" },
+  { nome: "Cesta 34", precoPor: "166,80", itens: ["Colônia Diva Absoluta 100ml", "Hidratante Corporal Diva Absoluta 200ml", "Cesta Presenteável."], foto: "fotos/cesta34.jpg" },
+  { nome: "Cesta 35", precoPor: "186,80", itens: ["Colônia Imensi Infinit 100ml", "Hidratante Corporal Imensi Infinit 200ml", "Cesta Presenteável."], foto: "fotos/cesta35.jpg" },
+  { nome: "Cesta 36", precoPor: "229,90", itens: ["Colônia Luna Tradicional 75ml", "Deo Corporal Luna Tradicional 100ml", "Creme para as mãos Luna Tradicional 40g", "Sabonete Tododia Coração 90g", "Cesta Presenteável."], foto: "fotos/cesta36.jpg" },
+  { nome: "Cesta 37", precoPor: "191,90", itens: ["Colônia Lyra Tradicional 75ml", "Body Splash Lyra Tradicional 100ml", "Cesta Presenteável."], foto: "fotos/cesta37.jpg" },
+  { nome: "Cesta 38", precoPor: "176,90", itens: ["Colônia Magnific Rouge Camélia 75ml", "Hidratante Corporal Magnific Rouge Camélia 200ml", "Cesta Presenteável."], foto: "fotos/cesta38.jpg" },
+  { nome: "Cesta 39", precoPor: "105,90", itens: ["Body Splash Morango Irresistível 200ml", "Hidrante Corporal de Massagem Morango Irresistível 180ml", "Sabonete em Barra 90g", "Cesta Presenteável."], foto: "fotos/cesta39.jpg" },
+  { nome: "Cesta 40", precoPor: "131,90", itens: ["Body Splash Ameixa e Flor de Baunilha 200ml", "Hidratante Corporal Ameixa e Flor de Baunilha 200ml", "Sabonete Tododia Coração 90g", "Cesta Presenteável."], foto: "fotos/cesta40.jpg" },
+  { nome: "Cesta 41", precoPor: "154,90", itens: ["Body Splash Ameixa e Flor de Baunilha 200ml", "Hidratante Corporal Ameixa e Flor de Baunilha 200ml", "Sabonete em Barra 90g", "Porta Jóias", "Cesta Presenteável."], foto: "fotos/cesta41.jpg" },
+  { nome: "Cesta 42", precoPor: "86,80", itens: ["Hidratante Corporal Ameixa e Flor de Baunilha 200ml", "Sabonete Líquido Ameixa e Flor de Baunilha 200ml", "Cesta Presenteável."], foto: "fotos/cesta42.jpg" },
+  { nome: "Cesta 43", precoPor: "164,90", itens: ["Hidratante Corporal Acetinado Lily Tradicional 250g", "Porta Jóias", "Sabonete Tododia Coração 90g", "Cesta Presenteável."], foto: "fotos/cesta43.jpg" },
+  { nome: "Cesta 44", precoPor: "161,90", itens: ["Hidratante Corporal Acetinado Lily Tradicional 250g", "Antitranspirante Aerossol Lily Tradicional", "Cesta Presenteável."], foto: "fotos/cesta44.jpg" },
+  { nome: "Cesta 45", precoPor: "184,90", itens: ["Hidratante Corporal Macadâmia 400ml", "Body Splash Macadâmia 200ml", "Sabonete Líquido Macadâmia 300ml", "Cesta Presenteável."], foto: "fotos/cesta45.jpg" },
+  { nome: "Cesta 46", precoPor: "184,90", itens: ["Hidratante Corporal algodão 400ml", "Body Splash algodão 200ml", "Sabonete Líquido algodão 300ml", "Cesta Presenteável."], foto: "fotos/cesta46.jpg" },
+  { nome: "Cesta 47", precoPor: "167,90", itens: ["Esfoliante Corporal Romã 200ml", "Creme Para As Mãos Romã 50ml", "Sabonete Em Barra 2x75g"], foto: "fotos/cesta47.jpg" },
+  { nome: "Cesta 48", precoPor: "121,80", itens: ["Leite Hidratante Corporal Ilía Secreto 150ml", "Creme para as mãos Ilía Secreto 90g", "Sabonete em Barra Ilía Secreto 90g"], foto: "fotos/cesta48.jpg" },
+  { nome: "Cesta 49", precoPor: "115,90", itens: ["Hidratante Corporal Instance Baunilha Intensa 400ml", "Creme para as mãos Instance Baunilha Intensa 30g", "Porta Jóias", "Cesta Presenteável."], foto: "fotos/cesta49.jpg" },
+  { nome: "Cesta 50", precoPor: "264,90", itens: ["Deo Parfum Essencial Oud 100ml", "Sabonete Líquido Corporal 100ml", "Caneca Mãe Corações", "Cesta Presenteàvel."], foto: "fotos/cesta50.jpg" },
+  { nome: "Cesta 51", precoPor: "259,90", itens: ["Deo Parfum Essential Atrai 100ml", "Deo Corporal Essencial Atrai 100ml", "Cesta Presenteàvel."], foto: "fotos/cesta51.jpg" },
+  { nome: "Cesta 52", precoPor: "72,90", itens: ["Creme de mãos Rosa Absoluta 30g", "Sabonete Tododia Coração 90g", "Porta Jóias", "Cesta Presenteável."], foto: "fotos/cesta52.jpg" },
+  { nome: "Cesta 53", precoPor: "166,90", itens: ["Colônia Meu Primeiro Humor 75ml", "Hidratante Corporal Iluminador 75g", "Presilha Flor", "Cesta Presenteável."], foto: "fotos/cesta53.jpg" },
+  { nome: "Cesta 54", precoPor: "131,90", itens: ["Body Splash Meu Primeiro Humor 200ml", "Hidratante Corporal Iluminador 75g", "Carteira", "Cesta Presenteável."], foto: "fotos/cesta54.jpg" },
+  { nome: "Cesta 55", precoPor: "126,80", itens: ["Body Splash Flor de Pera e Melissa 200ml", "Sabonete Líquido Flor de Pera e Melissa 300ml", "Cesta Presenteável."], foto: "fotos/cesta55.jpg" },
+  { nome: "Cesta 56", precoPor: "131,90", itens: ["Body Splash Humor Próprio 200ml", "Gel Hidratante Corporal Iluminador Humor Próprio 200g", "Cesta Presenteável"], foto: "fotos/cesta56.jpg" },
+  { nome: "Cesta 57", precoPor: "204,90", itens: ["Hidratante Corporal Cereja e Avelã 400ml", "Body Splash Cereja e Avelã 200ml", "Óleo Corporal Bifasico Cereja e Avelã 150ml", "Carteira", "Cesta Presenteável."], foto: "fotos/cesta57.jpg" },
+  { nome: "Cesta 58", precoPor: "151,80", itens: ["Hidratante Corporal Orquídea Noire 400ml", "Sabonete Líquido Orquídea Noire 250ml", "Cesta Presenteável"], foto: "fotos/cesta58.jpg" },
+  { nome: "Cesta 59", precoPor: "241,90", itens: ["Hidratante Corporal Ameixa Negra 400ml", "Oleo Corporal Ameixa Negra 200ml", "Sabonete Líquido Ameixa Negra 250ml", "Cesta Presenteável"], foto: "fotos/cesta59.jpg" },
+  { nome: "Cesta 60", precoPor: "234,80", itens: ["Body Splash Her Code Tradicional 200ml", "Hidratante Her Code Tradicional 200ml", "Relógio", "Cesta Presenteável"], foto: "fotos/cesta60.jpg" },
+  { nome: "Cesta 61", precoPor: "101,90", itens: ["Body Splash Lyra Tradicional 100ml", "Hidratante Corporal Imensi Infinit 200ml", "Cesta presenteável"], foto: "fotos/cesta61.jpg" },
+  { nome: "Cesta 62", precoPor: "101,90", itens: ["Body Splash Diva Esplêndida 100ml", "Hidratante Corporal Diva Esplêndida 200ml", "Cesta presenteável"], foto: "fotos/cesta62.jpg" },
+  { nome: "Cesta 63", precoPor: "71,90", itens: ["Sabonte Líquido Corporal Amora Vermelha e Jabuticaba 100g", "Creme para as mãos Amora Vermelha e Jabuticaba 50ml", "Cesta Presenteável"], foto: "fotos/cesta63.jpg" },
+  { nome: "Cesta 64", precoPor: "484,90", itens: ["Eau Parfum Lily Tradicional 75ml", "Hidratante Corporal Acetinado Lily Tradicional", "Urso de Pelucia", "Cesta Presenteável"], foto: "fotos/cesta64.jpg" },
+  { nome: "Cesta 65", precoPor: "224,90", itens: ["Deo Parfum Ilia Secreto 50ml", "Creme para as mãos Ilia Secreto 40g", "Sabonete em Barra Ilía Secreto 90g", "Pelucia Coração", "Cesta Presenteável"], foto: "fotos/cesta65.jpg" },
+  { nome: "Cesta 66", precoPor: "59,90", itens: ["Hidratante Corporal Iluminador Framboesa e Pimenta Vermelha 125ml", "Sabonete em Barra Framboesa e Pimenta Vermelha 2x90g", "Cesta Presenteável."], foto: "fotos/cesta66.jpg" },
+  { nome: "Cesta 67", precoPor: "134,90", itens: ["Hidratante Corporal Ekos Andiroba 400ml", "Sabonete em Barra Ekos Sortido 4x100g", "Cesta Presenteável"], foto: "fotos/cesta67.jpg" },
+  { nome: "Cesta 68", precoPor: "189,90", itens: ["Colônia Floratta Red Blossom 30ml", "Hidratante Corporal Floratta Red 75ml", "Sabonete Tododia Coração 90g", "Necessaire Mãe Sortida", "Cesta Presenteável"], foto: "fotos/cesta68.jpg" },
+  { nome: "Cesta 69", precoPor: "49,90", itens: ["Hidratante Corporal Tâmara e Canela 100ml", "Sabonete em Barra 90g", "Cesta Presenteável"], foto: "fotos/cesta69.jpg" },
+  { nome: "Cesta 70", precoPor: "49,90", itens: ["Hidratante Corporal Flor de Pera e Melissa 100ml", "Sabonete em Barra 90g", "Cesta Presenteável"], foto: "fotos/cesta70.jpg" },
+  { nome: "Presente 71", precoPor: "79,90", itens: ["Hidratante Corporal Diva Absoluta 200ml", "Creme para as mãos Essencial Exclusivo 40g", "Sabonete em Barra 90g", "Coração MDF Presenteável"], foto: "fotos/presente71.jpg" },
+  { nome: "Presente 72", precoPor: "50,00", itens: ["Hidratante Corporal Ameixa Dourada 100ml", "Sabonete em Barra Nativa Spa 90g", "Coração MDF Presenteável"], foto: "fotos/presente72.jpg" },
+  { nome: "Presente 73", precoPor: "234,90", itens: ["Colônia Liz Tradicional 100ml", "Hidratante Corporal Liz Tradicional 250g", "Necessaire Mãe Sortida", "Caixote MDF Mãe"], foto: "fotos/presente73.jpg" },
+  { nome: "Presente 74", precoPor: "54,90", itens: ["Body Splash Aquavibe Jabuticaba 150ml", "Sabonete em Barra Sortido 3x80g", "Necessaire Mãe Sortida", "Caixote MDF Mãe"], foto: "fotos/presente74.jpg" },
+  { nome: "Presente 75", precoPor: "114,90", itens: ["Body Splash Flor de Pêssego e Jasmim 200ml", "Sabonete em Barra Flor de Pêssego e Jasmim 2x90g", "Bolsa de Palha Presenteável"], foto: "fotos/presente75.jpg" },
+  { nome: "Presente 76", precoPor: "25,00", itens: ["Creme para as mãos Luva de Silicone Lavanda", "Sabonete em Barra Amora Vermelha e Jabuticaba 90g", "Caixa Presenteável"], foto: "fotos/presente76.jpg" },
+  { nome: "Presente 77", precoPor: "313,90", itens: ["Colônia Floratta Red 75ml", "Óleo Corporal Floratta Red 150ml", "Necessaire", "Caixa Presenteável"], foto: "fotos/presente77.jpg" },
+  { nome: "Cesta 78", precoPor: "136,90", itens: ["Deo Parfum Far Away Infinity 50ml", "Sabonete Tododia Coração 90g", "Porta Jóias", "Cesta Presenteável"], foto: "fotos/cesta78.jpg" },
+  { nome: "Cesta 79", precoPor: "45,00", itens: ["Hidratante Corporal Frutas Cítricas e Gengibre", "Sabonete em Barra 90g", "Cesta Presenteável"], foto: "fotos/cesta79.jpg" },
+  { nome: "Presente 80", precoPor: "29,90", itens: ["Creme para as mãos Baunilha Intensa 30ml", "Sabonete em Barra 90g", "Caixa Presenteável"], foto: "fotos/presente80.jpg" },
+  { nome: "Presente 81", precoPor: "39,90", itens: ["Creme para as mãos Romã e Flor de Amora 50ml", "Sabonete em Barra Romã e Flor de Amora 90g", "Caixa Presenteável"], foto: "fotos/presente81.jpg" },
+  { nome: "Presente 82", precoPor: "20,00", itens: ["Toalha Social para as mãos Cores Sortidas", "Sabonete em Barra 90g", "Coração Acetado Presenteável"], foto: "fotos/presente82.jpg" },
+  { nome: "Presente 83", precoPor: "29,90", itens: ["Creme para as mãos Rosa Absoluta 30ml", "Sabonete em Barra 80g", "Coração Acetado Presenteável"], foto: "fotos/presente83.jpg" },
+  { nome: "Presente 84", precoPor: "89,90", itens: ["Hidratante Corporal Tododia Cereja e Avelã 200ml", "Sabonete Líquido Tododia Cereja e Avelã 300ml", "Caixa Presenteável"], foto: "fotos/presente84.jpg" },
+  { nome: "Presente 85", precoPor: "104,90", itens: ["Hidratante Corporal Tododia Macadâmia 400ml", "Sabonete Líquido Tododia Macadâmia 300ml", "Caixa Presenteável"], foto: "fotos/presente85.jpg" }
+];
+
+// ── Geração automática dos cards ──
+const WA = "5517991564048";
+const grid = document.getElementById('grid');
+
+cestas.forEach((c, i) => {
+  const num = String(i + 1).padStart(2, '0');
+  const numCesta = i + 1;
+  const isEsgotado = esgotados.includes(numCesta);
+
+  const overlayEsgotado = isEsgotado ? `
+    <div style="position:absolute;inset:0;background:rgba(30,10,5,0.58);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:2;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      <span style="color:#fff;font-size:15px;font-weight:500;letter-spacing:0.08em;font-family:'Montserrat',sans-serif;">Esgotado</span>
+    </div>` : '';
+
+  const fotoHtml = c.foto
+    ? `<div style="position:relative;overflow:hidden;"><img src="${c.foto}" alt="${c.nome}" style="width:100%;aspect-ratio:9/16;object-fit:contain;display:block;${isEsgotado ? 'filter:brightness(0.6);' : ''}">
+       <span class="card-numero">${num}</span>${overlayEsgotado}</div>`
+    : `<div class="card-foto-placeholder" style="position:relative;overflow:hidden;">
+         <span class="ico">🧺</span>
+         <span>Adicionar foto</span>
+         <span class="card-numero" style="position:absolute;top:12px;left:14px;">${num}</span>${overlayEsgotado}
+       </div>`;
+
+  const itensHtml = c.itens.map(it => `<div class="card-item">${it}</div>`).join('');
+
+  const itensMsg = c.itens.join(', ');
+  const msg = encodeURIComponent(`Olá! Gostaria de encomendar a *${c.nome}* por R$${c.precoPor}.\n\n*O que contém:*\n${c.itens.map(it => `- ${it}`).join('\n')}\n\nPoderia me passar mais informações sobre entrega e pagamento?`);
+
+  const botaoCarrinho = isEsgotado
+    ? `<button class="btn-carrinho" disabled style="opacity:0.4;cursor:not-allowed;background:#888;">😔 Indisponível</button>`
+    : `<button class="btn-carrinho" id="btn-carr-${i}" onclick="adicionarCarrinho(${i})">🛒 Adicionar ao carrinho</button>`;
+
+  grid.innerHTML += `
+    <div class="card${isEsgotado ? ' card-esgotada' : ''}">
+      ${fotoHtml}
+      <div class="card-body" style="${isEsgotado ? 'opacity:0.55;' : ''}">
+        <div class="card-badge">♥ Dia dos Namorados · 2026</div>
+        <div class="card-nome">${c.nome}</div>
+        <div class="card-preco-row">
+          <span class="card-preco">R$ ${c.precoPor}</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-itens-titulo">O que está incluso</div>
+        <div class="card-itens">${itensHtml}</div>
+      </div>
+      <div class="card-footer">
+        ${botaoCarrinho}
+        ${isEsgotado
+          ? `<button class="card-btn" disabled style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.088 1.504 5.808L0 24l6.336-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.728.875.942-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+              Chamar no WhatsApp
+            </button>`
+          : `<a class="card-btn" href="https://wa.me/${WA}?text=${msg}" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.088 1.504 5.808L0 24l6.336-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.728.875.942-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+              Chamar no WhatsApp
+            </a>`}
+      </div>
+    </div>`;
+});
+
+// ── LÓGICA DO CARRINHO ──
+let carrinho = [];
+
+function adicionarCarrinho(idx) {
+  const c = cestas[idx];
+  const jaExiste = carrinho.find(item => item.idx === idx);
+  const btn = document.getElementById('btn-carr-' + idx);
+
+  if (jaExiste) {
+    carrinho = carrinho.filter(item => item.idx !== idx);
+    btn.textContent = '🛒 Adicionar ao carrinho';
+    btn.classList.remove('adicionado');
+  } else {
+    carrinho.push({ idx, nome: c.nome, preco: c.precoPor, qtd: 1 });
+    btn.textContent = '✅ Adicionado!';
+    btn.classList.add('adicionado');
+  }
+  atualizarFloat();
+}
+
+function alterarQtd(idx, delta) {
+  const item = carrinho.find(item => item.idx === idx);
+  if (!item) return;
+  item.qtd += delta;
+  if (item.qtd <= 0) {
+    removerItem(idx);
+    return;
+  }
+  atualizarFloat();
+  abrirCarrinho();
+}
+
+function atualizarFloat() {
+  const float = document.getElementById('carrinho-float');
+  const badge = document.getElementById('carr-count');
+  const texto = document.getElementById('carr-texto');
+  const totalItens = carrinho.reduce((s, i) => s + i.qtd, 0);
+  badge.textContent = totalItens;
+  if (carrinho.length > 0) {
+    float.style.display = 'flex';
+    texto.textContent = totalItens === 1 ? '1 item' : totalItens + ' itens';
+  } else {
+    float.style.display = 'none';
+  }
+}
+
+function abrirCarrinho() {
+  const overlay = document.getElementById('modal-overlay');
+  const lista = document.getElementById('carr-lista');
+  const vazio = document.getElementById('carr-vazio');
+  const totalEl = document.getElementById('carr-total-valor');
+
+  overlay.classList.add('open');
+
+  if (carrinho.length === 0) {
+    lista.innerHTML = '';
+    vazio.style.display = 'block';
+    totalEl.textContent = 'R$ 0,00';
+    return;
+  }
+
+  vazio.style.display = 'none';
+  let total = 0;
+  lista.innerHTML = carrinho.map(item => {
+    const preco = parseFloat(item.preco.replace(',', '.'));
+    const subtotal = preco * item.qtd;
+    total += subtotal;
+    const foto = cestas[item.idx].foto;
+    const fotoHtml = foto
+      ? `<img class="carr-item-foto" src="${foto}" alt="${item.nome}">`
+      : `<div class="carr-item-foto-placeholder">🧺</div>`;
+    return `<div class="carr-item">
+      <div class="carr-item-esq">
+        ${fotoHtml}
+        <div class="carr-item-info">
+          <div class="carr-item-nome">${item.nome}</div>
+          <div class="carr-item-preco">R$ ${item.preco}${item.qtd > 1 ? ' x ' + item.qtd + ' = R$ ' + subtotal.toFixed(2).replace('.', ',') : ''}</div>
+        </div>
+      </div>
+      <div class="carr-item-acoes">
+        <div class="carr-qtd-wrap">
+          <button class="carr-qtd-btn" onclick="alterarQtd(${item.idx}, -1)" title="Diminuir">−</button>
+          <span class="carr-qtd-num">${item.qtd}</span>
+          <button class="carr-qtd-btn" onclick="alterarQtd(${item.idx}, 1)" title="Aumentar">+</button>
+        </div>
+        <button class="carr-item-remover" onclick="removerItem(${item.idx})" title="Remover">×</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  totalEl.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+}
+
+function removerItem(idx) {
+  carrinho = carrinho.filter(item => item.idx !== idx);
+  const btn = document.getElementById('btn-carr-' + idx);
+  if (btn) { btn.textContent = '🛒 Adicionar ao carrinho'; btn.classList.remove('adicionado'); }
+  atualizarFloat();
+  abrirCarrinho();
+}
+
+function fecharCarrinho() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function fecharSeForaModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) fecharCarrinho();
+}
+
+function enviarPedido() {
+  if (carrinho.length === 0) return;
+  let msg = '*Olá, Bellessence!* Gostaria de fazer um pedido:\n\n';
+  let total = 0;
+  carrinho.forEach((item, i) => {
+    const preco = parseFloat(item.preco.replace(',', '.'));
+    const subtotal = preco * item.qtd;
+    total += subtotal;
+    const cesta = cestas[item.idx];
+    msg += `${i+1}. *${item.nome}* — R$ ${item.preco} x ${item.qtd} = R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+    msg += `Contém: ${cesta.itens.join(', ')}\n\n`;
+  });
+  msg += `*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\nPoderia me passar mais informações sobre entrega e pagamento?`;
+  window.open('https://wa.me/5517991564048?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ── PESQUISA ──
+let termoBusca = '';
+let faixaAtiva = 'todos';
+
+function pesquisar(termo) {
+  termoBusca = termo.trim().toLowerCase();
+  aplicarFiltros();
+}
+
+function filtrar(faixa, btnClicado) {
+  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+  btnClicado.classList.add('ativo');
+  faixaAtiva = faixa;
+  aplicarFiltros();
+}
+
+function aplicarFiltros() {
+  const cards = document.querySelectorAll('.card');
+  let visiveis = 0;
+
+  cards.forEach((card, idx) => {
+    const c = cestas[idx];
+    const preco = parseFloat(c.precoPor.replace(',', '.'));
+
+    // Filtro de faixa de preço
+    let passaFaixa = false;
+    if (faixaAtiva === 'todos')       passaFaixa = true;
+    else if (faixaAtiva === '0-80')   passaFaixa = preco <= 80;
+    else if (faixaAtiva === '80-150') passaFaixa = preco > 80  && preco <= 150;
+    else if (faixaAtiva === '150-250')passaFaixa = preco > 150 && preco <= 250;
+    else if (faixaAtiva === '250+')   passaFaixa = preco > 250;
+
+    // Filtro de pesquisa
+    let passaBusca = true;
+    if (termoBusca.length > 0) {
+      const textoNome = c.nome.toLowerCase();
+      const textoItens = c.itens.join(' ').toLowerCase();
+      passaBusca = textoNome.includes(termoBusca) || textoItens.includes(termoBusca);
+    }
+
+    const mostrar = passaFaixa && passaBusca;
+    card.classList.toggle('oculto', !mostrar);
+    if (mostrar) visiveis++;
+  });
+
+  const searchRes = document.getElementById('search-resultado');
+  const filtroRes = document.getElementById('filtro-resultado');
+
+  if (termoBusca.length > 0) {
+    searchRes.textContent = visiveis === 0
+      ? `Nenhuma cesta encontrada com "${termoBusca}"`
+      : `${visiveis} cesta${visiveis > 1 ? 's' : ''} encontrada${visiveis > 1 ? 's' : ''} com "${termoBusca}"`;
+    filtroRes.textContent = '';
+  } else {
+    searchRes.textContent = '';
+    if (faixaAtiva !== 'todos') {
+      filtroRes.textContent = visiveis === 0
+        ? 'Nenhuma cesta encontrada nessa faixa de preço'
+        : `${visiveis} cesta${visiveis > 1 ? 's' : ''} encontrada${visiveis > 1 ? 's' : ''}`;
+    } else {
+      filtroRes.textContent = '';
+    }
+  }
+}
+</script>
+<!-- CARRINHO FLUTUANTE -->
+<div id="carrinho-float" onclick="abrirCarrinho()">
+  <span class="carr-icon">♥</span>
+  <span id="carr-texto">Meu carrinho</span>
+  <span class="carr-badge" id="carr-count">0</span>
+</div>
+
+<!-- MODAL CARRINHO -->
+<div id="modal-overlay" onclick="fecharSeForaModal(event)">
+  <div id="modal-box">
+    <div class="modal-header">
+      <button id="btn-fechar-modal" onclick="fecharCarrinho()">×</button>
+      <h2>♥ Meu Carrinho</h2>
+      <div class="modal-sub">BellEssence · Dia dos Namorados 2026</div>
+    </div>
+    <div class="modal-body">
+      <div id="carr-lista"></div>
+      <div id="carr-vazio" style="display:none">
+        <span class="carr-vazio-heart">♥</span>
+        Seu carrinho está vazio...<br>Que tal presentear alguém especial? 🌹
+      </div>
+      <div id="carr-total">
+        <span>Total</span>
+        <span id="carr-total-valor">R$ 0,00</span>
+      </div>
+      <button id="btn-enviar-pedido" onclick="enviarPedido()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.088 1.504 5.808L0 24l6.336-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.728.875.942-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        Enviar pedido pelo WhatsApp
+      </button>
+      <div class="carr-aviso-amor">"Presentear é um ato de amor" ♥</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
