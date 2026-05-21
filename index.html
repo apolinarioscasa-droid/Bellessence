@@ -274,7 +274,22 @@
   }
 
   /* ─── FILTROS ─── */
-  .filtros-wrap {
+  .card-btn-comprar {
+    background: linear-gradient(135deg, #6B1F2E, #9B3A4A);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 13px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.2s, transform 0.15s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .card-btn-comprar:hover { opacity: 0.9; transform: translateY(-1px); }
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -1077,6 +1092,10 @@ cestas.forEach((c, i) => {
     ? `<button class="btn-carrinho" disabled style="opacity:0.4;cursor:not-allowed;background:#888;">😔 Indisponível</button>`
     : `<button class="btn-carrinho" id="btn-carr-${i}" onclick="adicionarCarrinho(${i})">🛒 Adicionar ao carrinho</button>`;
 
+  const botaoComprar = isEsgotado
+    ? `<button class="card-btn" disabled style="opacity:0.4;cursor:not-allowed;pointer-events:none;">💳 Comprar agora</button>`
+    : `<button class="card-btn card-btn-comprar" onclick="comprarAgora(${i})">💳 Comprar agora</button>`;
+
   grid.innerHTML += `
     <div class="card${isEsgotado ? ' card-esgotada' : ''}">
       ${fotoHtml}
@@ -1092,18 +1111,42 @@ cestas.forEach((c, i) => {
       </div>
       <div class="card-footer">
         ${botaoCarrinho}
-        ${isEsgotado
-          ? `<button class="card-btn" disabled style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.088 1.504 5.808L0 24l6.336-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.728.875.942-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-              Chamar no WhatsApp
-            </button>`
-          : `<a class="card-btn" href="https://wa.me/${WA}?text=${msg}" target="_blank">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.088 1.504 5.808L0 24l6.336-1.487A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.728.875.942-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-              Chamar no WhatsApp
-            </a>`}
+        ${botaoComprar}
       </div>
     </div>`;
 });
+
+// ── COMPRAR AGORA (MERCADO PAGO) ──
+const API_URL = 'https://bellessence-api.onrender.com';
+
+async function comprarAgora(idx) {
+  const c = cestas[idx];
+  const btn = document.querySelector(`.card:nth-child(${idx + 1}) .card-btn-comprar`);
+  if (btn) { btn.textContent = '⏳ Aguarde...'; btn.disabled = true; }
+
+  try {
+    const resp = await fetch(`${API_URL}/criar-preferencia`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: c.nome,
+        preco: c.precoPor,
+        itens: c.itens,
+        quantidade: 1
+      })
+    });
+    const data = await resp.json();
+    if (data.init_point) {
+      window.location.href = data.init_point;
+    } else {
+      alert('Erro ao processar pagamento. Tente novamente.');
+      if (btn) { btn.textContent = '💳 Comprar agora'; btn.disabled = false; }
+    }
+  } catch (e) {
+    alert('Erro ao conectar. Tente novamente.');
+    if (btn) { btn.textContent = '💳 Comprar agora'; btn.disabled = false; }
+  }
+}
 
 // ── LÓGICA DO CARRINHO ──
 let carrinho = [];
